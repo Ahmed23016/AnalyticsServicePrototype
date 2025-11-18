@@ -274,6 +274,44 @@ curl http://localhost:4000/leaderboard
 curl http://localhost:4000/trends
 ```
 
+### Postman
+**1. GameResult aanmaken**
+
+**POST**
+`http://localhost:4000/results`
+
+**Body → JSON**
+
+```json
+{
+  "winner_id": "p10",
+  "loser_id": "p7",
+  "winner_damage": 45,
+  "loser_damage": 12
+}
+```
+
+**2. Player stats ophalen**
+
+**GET**
+`http://localhost:4000/stats/p10`
+
+(waar `p10` de playerId is)
+
+
+
+**3. Leaderboard ophalen**
+
+**GET**
+`http://localhost:4000/leaderboard`
+
+
+
+ **4. Trends ophalen**
+
+**GET**
+`http://localhost:4000/trends`
+
 
 ## Models (Contracts)
 
@@ -311,4 +349,6 @@ De AnalyticsServicePrototype biedt een volledige API-structuur met mock-logica.
 Hoewel de service een PostgreSQL-database vereist om te starten, wordt deze in de huidige versie niet gebruikt. Dit is een bewuste keuze op basis van onderzoek en projectdoelen. Alle data wordt gegenereerd in-memory via de MockAnalyticsService.
 
 Wanneer het spel echte statistieken gaat leveren, kan deze service eenvoudig worden uitgebreid met Ecto-schema’s, migraties en daadwerkelijke opslag in de database.
+
+
 

@@ -26,8 +26,8 @@ defmodule AnalyticsService.Services.MockAnalyticsService do
   def get_trends() do
     %{
       popular_cards: ["Fireball", "Shield", "Goblin Horde"],
-      global_win_rate: 0.53,
-      meta_shifts: ["Aggro rising", "Control stable"]
+      global_win_rate: [0.54, 0.37, 0.60]
+      meta_shifts: [0.05, 0.01, 0.03]
     }
   end
 end

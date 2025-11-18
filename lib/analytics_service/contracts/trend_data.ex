@@ -3,6 +3,6 @@ defmodule AnalyticsService.Contracts.TrendData do
   defstruct [
     :popular_cards,
     :global_win_rate,
-    :meta_shifts
+    :useage_rate
   ]
 end

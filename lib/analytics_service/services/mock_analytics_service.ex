@@ -1,12 +1,15 @@
 defmodule AnalyticsService.Services.MockAnalyticsService do
-  @moduledoc "Prototype in-memory analytics service"
+  alias AnalyticsService.Contracts.GameResult
+  alias AnalyticsService.Contracts.PlayerStats
+  alias AnalyticsService.Contracts.TrendData
+  alias AnalyticsService.Contracts.LeaderboardEntry
 
-  def record_result(_result) do
-    %{ok: true, message: "stored"}
+  def record_result(%GameResult{} = result) do
+    %{ok: true, stored: result}
   end
 
   def get_stats(player_id) do
-    %{
+    %PlayerStats{
       player_id: player_id,
       games_played: 10,
       wins: 6,
@@ -18,13 +21,23 @@ defmodule AnalyticsService.Services.MockAnalyticsService do
 
   def get_leaderboard() do
     [
-      %{player_id: "p1", rank: 1, win_rate: 0.82, games_played: 40},
-      %{player_id: "p2", rank: 2, win_rate: 0.79, games_played: 33}
+      %LeaderboardEntry{
+        player_id: "p1",
+        rank: 1,
+        win_rate: 0.82,
+        games_played: 40
+      },
+      %LeaderboardEntry{
+        player_id: "p2",
+        rank: 2,
+        win_rate: 0.79,
+        games_played: 33
+      }
     ]
   end
 
   def get_trends() do
-    %{
+    %TrendData{
       popular_cards: ["Fireball", "Shield", "Goblin Horde"],
       global_win_rate: [0.54, 0.37, 0.60]
       meta_shifts: [0.05, 0.01, 0.03]
